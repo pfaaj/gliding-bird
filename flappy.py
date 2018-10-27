@@ -237,6 +237,11 @@ def mainGame(movementInfo):
                     playerVelY = playerFlapAcc
                     playerFlapped = True
                     SOUNDS['wing'].play()
+            elif event.type == KEYDOWN and event.key == K_DOWN:
+                if playery > -2 * IMAGES['player'][0].get_height():
+                    playerVelY = -1 * playerFlapAcc
+                    playerFlapped = True
+                    SOUNDS['wing'].play()        
 
         # check for crash here
         crashTest = checkCrash({'x': playerx, 'y': playery, 'index': playerIndex},
