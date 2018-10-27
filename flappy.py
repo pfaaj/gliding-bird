@@ -19,9 +19,9 @@ IMAGES, SOUNDS, HITMASKS = {}, {}, {}
 PLAYERS_LIST = (
     # red bird
     (
-        'assets/sprites/redbird-upflap.png',
-        'assets/sprites/redbird-midflap.png',
-        'assets/sprites/redbird-downflap.png',
+        'assets/sprites/punk-flying/frame-1.png',
+        'assets/sprites//punk-flying/frame-1.png',
+        'assets/sprites//punk-flying/frame-2.png',
     ),
     # blue bird
     (
@@ -104,11 +104,26 @@ def main():
 
         # select random player sprites
         randPlayer = random.randint(0, len(PLAYERS_LIST) - 1)
-        IMAGES['player'] = (
+        randPlayer = 0
+        if randPlayer == 0:
+            large_img = (
+            pygame.image.load(PLAYERS_LIST[randPlayer][0]).convert_alpha(),
+            pygame.image.load(PLAYERS_LIST[randPlayer][1]).convert_alpha(),
+            pygame.image.load(PLAYERS_LIST[randPlayer][2]).convert_alpha(),
+            )
+            IMAGES['player'] = (
+            pygame.transform.scale(large_img[0], (34, 24)),
+            pygame.transform.scale(large_img[1],(34, 24)),
+            pygame.transform.scale(large_img[2], (34, 24)),
+            )
+        else:
+            IMAGES['player'] = (
             pygame.image.load(PLAYERS_LIST[randPlayer][0]).convert_alpha(),
             pygame.image.load(PLAYERS_LIST[randPlayer][1]).convert_alpha(),
             pygame.image.load(PLAYERS_LIST[randPlayer][2]).convert_alpha(),
         )
+
+        
 
         # select random pipe sprites
         pipeindex = random.randint(0, len(PIPES_LIST) - 1)
